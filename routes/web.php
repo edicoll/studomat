@@ -36,6 +36,10 @@ Route::get('/dashboard',[HomeController::class, 'index'])->middleware('auth')->n
 //home
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
+//ispiti
+Route::get('/ispiti', [HomeController::class, 'ispiti'])->middleware('auth')->name('ispiti');
+
+
 //Courses
 Route::get('/addcourse', [CoursesController::class, 'addCourse'])->name('addcourse');
 Route::get('/deletecourse',[CoursesController::class, 'deleteCourse'])->name('deletecourse');
@@ -47,6 +51,8 @@ Route::get('/deletedeadline',[DeadlineController::class, 'deleteDeadline'])->nam
 //grades
 Route::get('/addgrade',[GradeController::class, 'createGrade'])->name('addgrade');
 Route::get('/deletegrade',[GradeController::class, 'deleteGrade'])->name('deletegrade');
+
+
 
 
 

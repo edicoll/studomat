@@ -25,12 +25,17 @@ class HomeController extends Controller
            
 
             if($role == 'student'){
-                return Inertia::render('Dashboard', ['grades' => $grades]);
+                return Inertia::render('Dashboard', ['courses' => $courses, 'grades' => $grades]);
             }else if($role == 'admin'){
                 return Inertia::render('AdminDashboard',['courses' => $courses, 'deadlines' => $deadlines, 'grades' => $grades, 'users' => $users]);
             }else{
                 return Redirect::to('/');
             }
         }
+    }
+    public function ispiti(){
+        $courses = Course::all();
+        $grades = Grade::all();
+        return Inertia::render('Dashboard2',['courses' => $courses, 'grades' => $grades]);
     }
 }
