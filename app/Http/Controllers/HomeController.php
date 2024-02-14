@@ -36,6 +36,18 @@ class HomeController extends Controller
     public function ispiti(){
         $courses = Course::all();
         $grades = Grade::all();
-        return Inertia::render('Dashboard2',['courses' => $courses, 'grades' => $grades]);
+        $deadlines = Deadline::all(); 
+        return Inertia::render('Dashboard_ispiti',['courses' => $courses, 'grades' => $grades, 'deadlines' => $deadlines]);
+    }
+    public function rokovi(){
+        $courses = Course::all();
+        $deadlines = Deadline::all();
+        return Inertia::render('AdminRokovi',['courses' => $courses, 'deadlines' => $deadlines]);
+    }
+    public function ocijene(){
+        $users = User::where('role', 'student')->get();
+        $courses = Course::all();
+        $grades = Grade::all();
+        return Inertia::render('AdminOcijene',['courses' => $courses, 'grades' => $grades, 'users' => $users]);
     }
 }

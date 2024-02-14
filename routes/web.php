@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DeadlineController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\TrieController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -36,9 +37,12 @@ Route::get('/dashboard',[HomeController::class, 'index'])->middleware('auth')->n
 //home
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
-//ispiti
+//student
 Route::get('/ispiti', [HomeController::class, 'ispiti'])->middleware('auth')->name('ispiti');
 
+//admin
+Route::get('/rokovi', [HomeController::class, 'rokovi'])->middleware('auth')->name('rokovi');
+Route::get('/ocijene', [HomeController::class, 'ocijene'])->middleware('auth')->name('ocijene');
 
 //Courses
 Route::get('/addcourse', [CoursesController::class, 'addCourse'])->name('addcourse');
@@ -52,7 +56,8 @@ Route::get('/deletedeadline',[DeadlineController::class, 'deleteDeadline'])->nam
 Route::get('/addgrade',[GradeController::class, 'createGrade'])->name('addgrade');
 Route::get('/deletegrade',[GradeController::class, 'deleteGrade'])->name('deletegrade');
 
-
+//tries
+Route::get('/addtrie',[TrieController::class, 'createTrie'])->name('addtrie');
 
 
 

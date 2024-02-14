@@ -2,8 +2,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/react";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
+import PrimaryButton from "@/Components/PrimaryButton";
 
-export default function Dashboard({ auth, courses, grades }) {
+export default function Dashboard({ auth, courses, grades, deadlines }) {
  
    
     return (
@@ -39,15 +40,37 @@ export default function Dashboard({ auth, courses, grades }) {
                              
                         
                         
-                            <div className="mt-6">
+                        <div className="mt-6">
                                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                     <div className="flex flex-wrap justify-start p-6 text-gray-900">
+                                        
                                          
-                                            hello darknes my old frined
+                                            {deadlines.map((deadline) => (
+                                          <div className="text-center bg-blue-300 w-1/5 h-auto p-4 rounded-lg shadow-md m-6">
+                                        <form
+                                         action="/addtrie"
+                                         method="GET"
+                                          >
+                                         <input type="hidden" name="course_name" value={deadline.course_name}></input>
+                                         Kolegij: <b>{deadline.course_name}</b>
+                                         <br/>
+                                        
+                                         <input type="hidden" name="deadline_id" value={deadline.id}></input>
+                                         Datum: <b>{deadline.date}</b>
+
+                                      
+                                          <PrimaryButton className="mt-4 ">
+                                             prijavi ispit
+                                          </PrimaryButton>
+                                          </form> 
+                                           </div> 
+                                            ))}
                                         </div>
+                                  
                                     
                                 </div>
-                            </div>
+                            
+                        </div>
                       
                     </div>
                 </div>

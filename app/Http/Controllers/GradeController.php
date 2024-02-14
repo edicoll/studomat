@@ -22,14 +22,14 @@ class GradeController extends Controller
        $income['course_name'] = $course_name;
        $income['user_name'] = $user_name;
        Grade::create($income);
-       return redirect('/home');
+       return redirect('/ocijene');
     }
 
     public function deleteGrade(Request $request){
         
         $grade = Grade::find($request->id);
         $grade->delete();
-        return redirect('/home');
+        return redirect('/ocijene');
         
     }
 }

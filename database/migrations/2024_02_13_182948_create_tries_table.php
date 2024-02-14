@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('tries', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->text('user_name');
+            $table->foreignId('deadline_id')->constrained();
+            $table->date('deadline_date');
+            $table->text('course_name');
         });
     }
 
