@@ -62,7 +62,7 @@ export default function Dashboard({ auth, courses, deadlines }) {
                                                 <select
                                                     name="course_id"
                                                     className=" rounded-lg shadow-md mt-2 block w-full"
-                                                ><option></option>
+                                                ><option>-- odaberi --</option>
                                                     {courses.map((course) => (
                                                         <option
                                                             value={course.id}

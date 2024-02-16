@@ -2,6 +2,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 import PrimaryButton from "@/Components/PrimaryButton";
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Legend, Tooltip, Label } from "recharts";
+
 
 export default function Dashboard({ auth, courses, grades, users }) {
    
@@ -87,7 +89,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                             <div className="mt-6">
                                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                     <div className="flex flex-wrap justify-start p-6 text-gray-900">
-                                        <div className="text-center bg-green-200 w-1/4  p-4 rounded-lg shadow-md m-12">
+                                        <div className="text-center bg-green-200 w-1/4 h-96 p-4 rounded-lg shadow-md m-12">
                                             <b>Dodavanje ocijena</b>
                                             <form
                                                 action="/addgrade"
@@ -98,7 +100,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                 <select
                                                     name="course_id"
                                                     className=" rounded-lg shadow-md  block w-full"
-                                                ><option></option>
+                                                ><option>-- odaberi --</option>
                                                     {courses.map((course) => (
                                                         <option
                                                             value={course.id}
@@ -112,7 +114,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                 <select
                                                     name="user_id"
                                                     className=" rounded-lg shadow-md block w-full"
-                                                ><option></option>
+                                                ><option>-- odaberi --</option>
                                                     {users.map((user) => (
                                                         <option value={user.id}>
                                                             {user.name}
@@ -126,7 +128,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                     <select
                                                         name="grade"
                                                         className=" rounded-lg shadow-md block w-full"
-                                                    ><option></option>
+                                                    ><option>-- odaberi --</option>
                                                         <option value="1">
                                                             1
                                                         </option>
@@ -149,7 +151,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                 </PrimaryButton>
                                             </form>
                                         </div>
-                                        <div className="text-center bg-blue-300 w-1/4 h-24 p-4 rounded-lg shadow-md m-12">
+                                        <div className="text-center bg-blue-300 w-1/4 h-24 p-4 rounded-lg shadow-md m-12  ">
                                             <form>
                                                 <label>
                                                     Prikaži ocijene za studenta:
@@ -162,7 +164,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                         )
                                                     }
                                                 >
-                                                    <option></option>
+                                                    <option>-- odaberi --</option>
                                                     {users.map((user) => (
                                                         <option value={user.id}>
                                                             {user.name}
@@ -170,6 +172,27 @@ export default function Dashboard({ auth, courses, grades, users }) {
                                                     ))}
                                                 </select>
                                             </form>
+                                                        
+                                                <div className="-translate-x-3 h-72 w-72 bg-blue-300 mt-10 right-16 rounded-lg shadow-md block w-full">
+                                                     <div className="">Prikaz ocijena po kolegijima</div>
+                                                <ResponsiveContainer width='100%' height='100%'>
+                                                <BarChart width={600} height={400} data={grades} margin={{top: 20, right: 20, bottom: 32, left: 4}}>
+                                                   <YAxis  label={{ value: 'Ocijene', angle: -90, position: 'insideLeft' }} />
+                                                  
+                                                   <XAxis dataKey="course_name">
+                                                     <Label value="Kolegiji" offset={0} position="insideBottom" />
+                                                    </XAxis>
+                                                   
+                                                   <CartesianGrid  strokeDasharray='3 3'/>
+
+                                                   <Tooltip />
+                                                   
+
+                                                   <Bar  dataKey='grade' fill="#3665A9" barSize={30}></Bar>
+                                                 </BarChart>
+                                                 </ResponsiveContainer>
+                                                    </div>
+
                                         </div>
                                         <div id="dodaj"></div>
                                     </div>

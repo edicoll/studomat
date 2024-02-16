@@ -14,15 +14,22 @@ class DeadlineController extends Controller
     public function createDeadline(Request $request){
         
         $course_name = Course::find($request->course_id)->name;
-    
+        $deadlines = Deadline::where('course_id', $request->course_id)->get();
+        $length = count($deadlines);
             
        $income = $request->validate([
             'course_id' =>'required',
             'date' => 'required'
        ]); 
-       
-       $income['course_name'] = $course_name;
+
+
+       if($length >= 3){
+            
+       }else{
+        $income['course_name'] = $course_name;
         Deadline::create($income);
+       }
+       
         return redirect('/rokovi');
         
     }

@@ -58,6 +58,7 @@ Route::get('/deletegrade',[GradeController::class, 'deleteGrade'])->name('delete
 
 //tries
 Route::get('/addtrie',[TrieController::class, 'createTrie'])->name('addtrie');
+Route::get('/deletetrie',[TrieController::class, 'deleteTrie'])->name('deletetrie');
 
 
 

@@ -65,7 +65,7 @@ export default function Authenticated({ user, children }) {
                                             href={route("profile.edit")}
                                             className="hover:scale-110 text-xl"
                                         >
-                                            Profile
+                                            Profil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
@@ -73,7 +73,7 @@ export default function Authenticated({ user, children }) {
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Odjava
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
