@@ -87,7 +87,7 @@ const needle = (value, data, cx, cy, iR, oR, color) => {
                 );
                 // Postavljanje sadržaja
                 noviElement.innerHTML = `
-                <p>Kolegij:<b> ${grade.course_name}</b></p>
+                <p>Datum:<b> ${grade.created_at.substring(0, 10)}</b></p>
                 <p>Ocijena:<b> ${grade.grade}</b></p>
                 `;
                 // Dodavanje novog elementa kao djeteta odabira

@@ -28,7 +28,7 @@ export default function Dashboard({ auth, courses, grades, users }) {
                 );
                 // Postavljanje sadržaja
                 noviElement.innerHTML = `
-                    <p>Student:<b> ${grade.user_name}</b></p>
+                    <p>Datum:<b> ${grade.created_at.substring(0, 10)}</b></p>
                     <p>Kolegij:<b> ${grade.course_name}</b></p>
                     <p>Ocijena:<b> ${grade.grade}</b></p>
                     <form
